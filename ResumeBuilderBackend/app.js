@@ -1,13 +1,12 @@
-var express = require('express');
-var app = express();
+const express = require ('express');
+const routes = require('./routes/ResumeBuilderRoutes'); // import the routes
 
-app.get('/', function (req, res) {
-   res.send('Hello World');
-});
+const app = express();
 
-var server = app.listen(8081, function () {
-   var host = server.address().address;
-   var port = server.address().port;
-   
-   console.log("Resume Builder App listening at http://%s:%s", host, port);
-});
+app.use(express.json());
+
+app.use('/', routes); //to use the routes
+
+const listener = app.listen(process.env.PORT || 3000, () => {
+    console.log('Your app is listening on port ' + listener.address().port)
+})
