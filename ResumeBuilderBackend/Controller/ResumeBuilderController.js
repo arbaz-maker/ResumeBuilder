@@ -68,4 +68,27 @@ const SaveResumeController = async(req,res) => {
     }
 }
 
-module.exports = {Login,SaveResumeController};
+const GetResumeController = async(req,res) => {
+    try
+    {
+        
+        await Resume.find({Contact_Information:{
+            FullName:req.body.Contact_Information.FullName,
+            EmailAddress:req.body.Contact_Information.EmailAddress,
+            LinkedInProfileUrl:req.body.Contact_Information.LinkedInProfileUrl,
+            ContactNumber:req.body.Contact_Information.ContactNumber,
+            Location:req.body.Contact_Information.Location,
+        },
+        }).then((result) => {
+            res.send(result)
+        }).catch((error) => {
+            res.send(error)
+        })
+    
+    }
+    catch(error)
+    {
+        res.send(error)
+    }
+}
+module.exports = {Login,SaveResumeController,GetResumeController};
