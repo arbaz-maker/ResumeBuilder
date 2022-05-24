@@ -1,9 +1,12 @@
 const Router = require('express');
-const Login = require('../Controller/ResumeBuilderController'); 
+const ResumeBuilderController = require('../Controller/ResumeBuilderController'); 
 
 
 const router  = Router(); 
-router.post('/login',Login.Login); 
+
+router.post('/login',ResumeBuilderController.Login);
+router.post('/Resume',ResumeBuilderController.SaveResumeController); 
+
 
 module.exports = router;
 
