@@ -1,4 +1,5 @@
 const express = require ('express');
+require('./Database/mongoose')
 const routes = require('./routes/ResumeBuilderRoutes'); // import the routes
 
 const app = express();

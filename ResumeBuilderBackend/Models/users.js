@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const ResumeBuilder = new mongoose.Schema({
+const User = new mongoose.Schema({
     UserName: {
         type: String,
         required: true,
@@ -13,6 +13,6 @@ const ResumeBuilder = new mongoose.Schema({
     }
 })
 
-const users = mongoose.model('users', ResumeBuilder)
+const Users = module.exports = mongoose.model("Users", User,"Users")
 
-module.exports = users
+// module.exports = Users

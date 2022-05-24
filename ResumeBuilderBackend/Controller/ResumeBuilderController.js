@@ -1,4 +1,4 @@
-const users = require("../Models/users")
+const Users = require("../Models/users")
 
 const Login = async(req, res) => {
     
@@ -8,17 +8,19 @@ const Login = async(req, res) => {
       
     }   
     else {
-        console.log(req.body)
+        console.log(req.body.username,req.body.password)
 
-        await users.find({ UserName: req.body.username, Password: req.body.password})
+        await Users.find(
+            { 
+            UserName: req.body.username,
+            }
+        )
         .then((Result) => {
             
             console.log(Result)
             if(Result)
             {
-                res.send({
-                    UserName:res,
-                });
+               res.send(Result)
             }
        })
        .catch((error) => {
