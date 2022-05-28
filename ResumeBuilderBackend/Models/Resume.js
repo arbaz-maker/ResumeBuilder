@@ -33,15 +33,8 @@ const ResumeSchema = new mongoose.Schema({
         },
 
     },
-    Education: [{
-        type: String,
-        trim: true
-    }],
-    Work_Experience:[{
-        type: String,
-        trim: true,
-        minlength:50
-    }]
+    Education: [],
+    Work_Experience:[]
 })
 
 const Resume = module.exports = mongoose.model("Resume", ResumeSchema,"Resume")

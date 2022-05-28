@@ -36,19 +36,17 @@ const Login = async(req, res) => {
 const SaveResumeController = async(req,res) => {
     try
     {
-        // req.assert('Contact_Information', 'Contact_Information is required').notEmpty()           //Validate name
-        // var errors = req.validationErrors()
+        console.log(req.body)
         var userDetails = new Resume({
             Contact_Information:{
-                FullName:req.body.Contact_Information.FullName,
-                EmailAddress:req.body.Contact_Information.EmailAddress,
-                LinkedInProfileUrl:req.body.Contact_Information.LinkedInProfileUrl,
-                ContactNumber:req.body.Contact_Information.ContactNumber,
-                Location:req.body.Contact_Information.Location,
+                FullName:req.body.PersonalInfo.FullName,
+                EmailAddress:req.body.PersonalInfo.EmailAddress,
+                LinkedInProfileUrl:req.body.PersonalInfo.LinkedInProfileUrl,
+                ContactNumber:req.body.PersonalInfo.ContactNumber,
+                Location:req.body.PersonalInfo.Location,
             },
             Education:req.body.Education,
-            Work_Experience:req.body.Work_Experience,
-
+            Work_Experience:req.body.WorkExp,
         });
         
         await userDetails.save((err, doc) => {
@@ -56,9 +54,10 @@ const SaveResumeController = async(req,res) => {
                 {
                     console.log("inserted")
                     res.send(doc);
-                }else
+                }else{
                     console.log('Error during record insertion : ' + err);
-                    res.send('error:', err.message, err.stack)
+                    res.send('error:', err.message, err.stack);
+                }
         });
     
     }
